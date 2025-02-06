@@ -35,9 +35,9 @@ services:
       dockerfile: Dockerfile
     container_name: pgpooladmin-gateway
     restart: always
-    # ports:
-    #   - "443:443"
-    #   - "80:80"
+    ports:
+      - "443:443"
+      - "80:80"
     networks:
       - pgpooladmin-network
     volumes:
