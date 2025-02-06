@@ -1,0 +1,9 @@
+[submodule "gateway"]
+	path = gateway
+	url = https://github.com/BlackIQ/pgpooladmin-gateway
+[submodule "console"]
+	path = console
+	url = https://github.com/BlackIQ/pgpooladmin-console
+[submodule "api"]
+	path = api
+	url = https://github.com/BlackIQ/pgpooladmin-api
