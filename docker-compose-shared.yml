@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile
     container_name: pgpooladmin-api
     restart: always
-    ports:
-      - 8000
+    # ports:
+    #   - "8000:8000"
     networks:
       - application-network
     env_file:
@@ -20,8 +20,8 @@ services:
       dockerfile: Dockerfile
     container_name: pgpooladmin-console
     restart: always
-    ports:
-      - 3000
+    # ports:
+    #   - "3000:3000"
     networks:
       - application-network
     depends_on:
