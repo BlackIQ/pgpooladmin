@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: api
+      dockerfile: Dockerfile
+    container_name: pgpooladmin-api
+    restart: always
+    # ports:
+    #   - "8000:8000"
+    networks:
+      - pgpooladmin-network
+    env_file:
+      - ./api/.env.local
+
+  console:
+    build:
+      context: console
+      dockerfile: Dockerfile
+    container_name: pgpooladmin-console
+    restart: always
+    # ports:
+    #   - "3000:3000"
+    networks:
+      - pgpooladmin-network
+    depends_on:
+      - api
+    env_file:
+      - ./console/.env.local
+
+  # gateway:
+  #   build:
+  #     context: gateway
+  #     dockerfile: Dockerfile
+  #   container_name: pgpooladmin-gateway
+  #   restart: always
+  #   ports:
+  #     - "443:443"
+  #     - "80:80"
+  #   networks:
+  #     - pgpooladmin-network
+  #   volumes:
+  #     - /volumes/pgpooladmin/cloud/cdn:/var/www/files
+
+networks:
+  pgpooladmin-network:
+    external: true
