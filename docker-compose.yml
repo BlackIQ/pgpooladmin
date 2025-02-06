@@ -13,6 +13,11 @@ services:
       - pgpooladmin-network
     env_file:
       - ./api/.env.local
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   console:
     build:
@@ -28,6 +33,11 @@ services:
       - api
     env_file:
       - ./console/.env.local
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   gateway:
     build:
@@ -42,6 +52,11 @@ services:
       - pgpooladmin-network
     volumes:
       - /volumes/pgpooladmin/cloud/cdn:/var/www/files
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
   pgpooladmin-network:
